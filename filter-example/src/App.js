@@ -1,21 +1,23 @@
 import { useState, useEffect} from "react";
 import Contact from "./components/ContactList/Contact";
 import Form from "./components/ContactList/Form";
+import './App.css'
 
 
 function App() {
 
-  const [allContact, setAllContact] = useState([]);
+  const [allContact, setAllContact] = useState([
+    {name : "Ahmet", surname : "Can"},
+    {name : "foo", surname : "foo"}
+  ]);
 
-  useEffect(() => {
-    //console.log(allContact)    
-  }, [allContact])
+  useEffect(() => {}, [allContact])
 
   return (  
-  <div>
-      <Contact contacts={allContact} />
-      <Form contact={allContact} setContact={setAllContact}/>
-  </div>
+    <div className="App">
+        <Contact contacts={allContact} />
+        <Form contact={allContact} setContact={setAllContact}/>
+    </div>
     
   );
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Form( { contact, setContact } ) {
-    const [form, setform] = useState({name : "", surname : ""});
+    const [form, setform] = useState({name:"", surname : ""});
 
     useEffect(() => {
         setform({name:"", surname : ""});
