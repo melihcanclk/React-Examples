@@ -9,8 +9,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
-
-
+import User from "../pages/User";
 
 export default function Navigate() {
   return (
@@ -38,6 +37,7 @@ export default function Navigate() {
             <Route path='/about' element={<About/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
             <Route path='/users' element={<Users/>} />
+            <Route path='/user/:id' element={<User/>} />
         </Routes>
       </div>
     </Router>

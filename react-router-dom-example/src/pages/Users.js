@@ -1,5 +1,8 @@
 import axios from "axios"
 import React,  { useState, useEffect } from 'react';
+import {
+    Link
+  } from "react-router-dom";
 
 function Users() {
 
@@ -30,11 +33,13 @@ function Users() {
                 ( 
                     users.map((userObj, id) => {
                         return (
-                        <div>
-                            <div>
-                                {id+1}){userObj.name}
-                            </div>
-                            <img key={id} alt={`${id}th element`} src={photos[id].url}></img>
+                        <div key={id}>
+                            <Link to={`/user/${id+1}`} >
+                                <div>
+                                    {id+1}){userObj.name}
+                                </div>
+                                <img alt={`${id}th element`} src={photos[id].url}></img>
+                            </Link>
                         </div>
                         
                         )
