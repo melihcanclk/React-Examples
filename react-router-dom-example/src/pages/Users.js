@@ -34,15 +34,15 @@ function Users() {
                     users.map((userObj, id) => {
                         return (
                         <div key={id}>
-                            <Link to={`/user/${id+1}`} >
+                            <Link to={`/user/${id+1}-${users.length}`} >
                                 <div>
                                     {id+1}){userObj.name}
                                 </div>
-                                <img alt={`${id}th element`} src={photos[id].url}></img>
                             </Link>
                         </div>
                         
                         )
+
                     })
                 )
         }

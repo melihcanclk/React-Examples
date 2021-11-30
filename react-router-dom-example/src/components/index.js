@@ -37,7 +37,7 @@ export default function Navigate() {
             <Route path='/about' element={<About/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
             <Route path='/users' element={<Users/>} />
-            <Route path='/user/:id' element={<User/>} />
+            <Route path='/user/:id-:max' element={<User/>} />
         </Routes>
       </div>
     </Router>
