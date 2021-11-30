@@ -8,9 +8,11 @@ import {
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Dashboard from "../pages/Dashboard";
+import Users from "../pages/Users";
 
 
-export default function BasicExample() {
+
+export default function Navigate() {
   return (
     <Router>
       <div>
@@ -24,21 +26,18 @@ export default function BasicExample() {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
         </ul>
 
         <hr />
 
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
         <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/about' element={<About/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
+            <Route path='/users' element={<Users/>} />
         </Routes>
       </div>
     </Router>
