@@ -22,7 +22,7 @@ function User() {
             setUser(res.data)
         })
             
-    }, [id, max])
+    }, [id])
     return (
         <div>
             <h2>{user===undefined ? <div>Loading!!!</div> : user.name}</h2>
