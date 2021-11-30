@@ -21,20 +21,25 @@ function Users() {
       <div>
         <h2>Users</h2>
         {
-            (users||photos) === undefined ? 
-                <div>
-                    Loading!!!
-                </div>: 
-                users.map((userObj, id) => {
-                   return (
+            (users && photos) === undefined ? 
+                (
                     <div>
+                        Loading!!!
+                    </div> 
+                ) : 
+                ( 
+                    users.map((userObj, id) => {
+                        return (
                         <div>
-                            {userObj.name}
+                            <div>
+                                {id+1}){userObj.name}
+                            </div>
+                            <img key={id} alt={`${id}th element`} src={photos[id].url}></img>
                         </div>
-                        <img key={id} alt={`${id}th element`} src={photos[parseInt(id)].url}></img>
-                    </div>
-                   )
-                })
+                        
+                        )
+                    })
+                )
         }
       </div>
     );
