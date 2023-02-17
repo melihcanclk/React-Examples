@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Header = (props) => {
     const totalPrice = props.cart.reduce((total, item) => (
-        total + item.price
+        total + (item.price * item.quantity)
     ), 0)
 
     return (
@@ -14,7 +14,7 @@ const Header = (props) => {
             <h2>
                 <Link to={`/${props.to}`}>{`Go To ` + props.toLabel}</Link>
             </h2>
-            <h3>Total Price: &#8378;{totalPrice.toFixed(2)}</h3>
+            <h3 className='cartItem'>Total Price: &#8378;{totalPrice.toFixed(2)}</h3>
         </div>
     )
 }

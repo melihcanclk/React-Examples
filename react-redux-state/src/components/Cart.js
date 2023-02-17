@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeFromCart } from "../actions";
+import { incrementToCart, reduceFromCart, removeAllFromCart } from "../actions";
 import Header from "./Header";
 
 const Cart = (props) => {
@@ -14,9 +14,18 @@ const Cart = (props) => {
             <h4>{cartItem.name}</h4>
             <p>Yazar: {cartItem.author}</p>
             <p>Fiyat: &#8378;{cartItem.price}</p>
-            <button onClick={() => props.removeFromCart(cartItem)}>
-              Remove From Cart
-            </button>
+            <p>Count: {cartItem.quantity}</p>
+            <div>
+              <button onClick={() => props.reduceFromCart(cartItem)}>
+                -
+              </button>
+              <button onClick={() => props.removeAllFromCart(cartItem)}>
+                Remove From Cart
+              </button>
+              <button onClick={() => props.incrementToCart(cartItem)}>
+                +
+              </button>
+            </div>
           </div>
         </div>
       ))}
@@ -28,4 +37,4 @@ const mapStateToProps = (state) => ({
   cart: state.cart
 });
 
-export default connect(mapStateToProps, { removeFromCart })(Cart);
+export default connect(mapStateToProps, { removeAllFromCart, reduceFromCart, incrementToCart })(Cart);
