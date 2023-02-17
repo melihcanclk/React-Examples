@@ -1,19 +1,32 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/actionTypes";
-
 const addToCart = (book) => {
     alert(`${book.name} added to cart!`);
     return {
-        type: ADD_TO_CART,
+        type: "ADD_TO_CART",
         payload: book
     };
 };
 
-const removeFromCart = (book) => {
+const removeAllFromCart = (book) => {
     alert(`${book.name} removed from cart!`);
     return {
-        type: REMOVE_FROM_CART,
+        type: "REMOVE_ALL_FROM_CART",
         payload: book
     };
 };
 
-export { addToCart, removeFromCart };
+const reduceFromCart = (book) => {
+    return {
+        type: "REDUCE_FROM_CART",
+        payload: book
+    };
+};
+
+const incrementToCart = (book) => {
+    return {
+        type: "INCREMENT_TO_CART",
+        payload: book
+    };
+};
+
+
+export { addToCart, removeAllFromCart, reduceFromCart, incrementToCart };

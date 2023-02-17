@@ -7,6 +7,13 @@ const Products = (props) => {
   return (
     <div>
       <Header to={'cart'} toLabel={'Card'} />
+      {
+        props.cart.map((cartItem, key) => (
+          <div className="cartItem" key={key} >
+            <h4>{cartItem.name} - &#8378;{cartItem.price} - {cartItem.quantity}</h4>
+          </div>
+        ))
+      }
       {props.bookList.map((book, key) => (
         <div key={key} className="book">
           <img src={book.image} alt="Simyaci" />
@@ -23,7 +30,8 @@ const Products = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  bookList: state.bookList
+  bookList: state.bookList,
+  cart: state.cart
 });
 
 export default connect(mapStateToProps, { addToCart })(Products);
