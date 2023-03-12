@@ -1,23 +1,25 @@
-import { useState } from 'react'
+import { useReducer } from 'react'
 import axios, { AxiosError, AxiosResponse } from "axios";
+import reducer from './reducer';
+
+const initialState = {
+  data: "",
+  loading: false,
+  error: ""
+}
 
 function App() {
-  const [data, setData] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
-
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { data, loading, error } = state;
+  
   const fetchDog = () => {
-    setLoading(true);
-    setError("");
-    setData("");
+    dispatch({ type: "FETCH_START" });
 
     axios("https://dog.ceo/api/breeds/image/random").then((res: AxiosResponse) => {
-      setData(res.data.message)
+      dispatch({ type: "FETCH_SUCCESS", payload: res.data.message });
     }).catch((err: AxiosError) => {
-      setError("Error fetching data : " + err);
-    }).finally(() => {
-      setLoading(false);
-    })
+      dispatch({ type: "FETCH_ERROR", payload: err.message });
+    });
 
   }
 
@@ -27,12 +29,12 @@ function App() {
         Fetch Dog
       </button>
       {
-        data && 
-          (
-            <div>
-              <img src={data} />
-            </div>
-          )
+        data &&
+        (
+          <div>
+            <img src={data} />
+          </div>
+        )
       }
       {error && (<>{error}</>)}
     </div>
